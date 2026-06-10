@@ -1,0 +1,430 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Component Test</title><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#888; font-family:'Lato','Open Sans',sans-serif; color:#26241F; }
+.page { width:816px; height:1056px; background:#FAF7F0; position:relative;
+        page-break-after:always; overflow:hidden; }
+.pad { padding:64px 72px 96px 72px; }
+
+/* footer chrome */
+.chrome { position:absolute; left:0; right:0; bottom:0; height:54px; }
+.chrome .rule { position:absolute; left:72px; right:72px; top:0; border-top:2px solid #1B4332; }
+.chrome .brand { position:absolute; left:72px; top:12px; font-size:10px; letter-spacing:2.5px;
+                 font-weight:bold; color:#1B4332; }
+.chrome .mid { position:absolute; left:0; right:0; top:12px; text-align:center; font-size:10px;
+               letter-spacing:2px; color:#6B675C; }
+.chrome .pno { position:absolute; right:72px; top:8px; font-size:12px; font-weight:bold;
+               color:#FAF7F0; background:#1B4332; padding:3px 10px; border-radius:10px; }
+
+/* part tab on page edge */
+.ptab { position:absolute; right:0; top:120px; width:34px; padding:14px 0;
+        color:#FAF7F0; text-align:center; border-radius:8px 0 0 8px; }
+.ptab span { display:block; font-size:10px; font-weight:bold; letter-spacing:2px;
+             -webkit-transform:rotate(0); }
+
+/* type */
+.kicker { font-size:11px; letter-spacing:3px; font-weight:bold; color:#E8A13C;
+          text-transform:uppercase; margin-bottom:10px; }
+h1 { font-family:'Roboto Slab',serif; font-size:34px; line-height:1.15; color:#1B4332;
+     margin-bottom:18px; }
+h2 { font-family:'Roboto Slab',serif; font-size:21px; line-height:1.25; color:#1B4332;
+     margin:22px 0 10px 0; }
+h3 { font-size:14px; letter-spacing:1.5px; text-transform:uppercase; color:#2D6A4F;
+     margin:18px 0 8px 0; }
+p, li { font-size:14.5px; line-height:1.62; }
+p { margin-bottom:12px; }
+ul, ol { margin:0 0 12px 22px; }
+li { margin-bottom:6px; }
+b, strong { color:#1B4332; }
+.small { font-size:11.5px; color:#6B675C; line-height:1.5; }
+.lead { font-size:17px; line-height:1.6; color:#26241F; }
+
+/* drop cap */
+.dropcap:first-letter { font-family:'Roboto Slab',serif; font-size:58px; float:left;
+  line-height:0.9; padding:4px 10px 0 0; color:#E8A13C; font-weight:bold; }
+
+/* callouts */
+.co { border-radius:10px; padding:16px 18px 12px 18px; margin:14px 0; }
+.co .cohead { font-size:11px; font-weight:bold; letter-spacing:2px; margin-bottom:6px; }
+.co p, .co li { font-size:13.5px; }
+.co-note { background:#DCE8DF; border-left:6px solid #74A892; }
+.co-note .cohead { color:#2D6A4F; }
+.co-warn { background:#F6E3DE; border-left:6px solid #C45B4C; }
+.co-warn .cohead { color:#C45B4C; }
+.co-key  { background:#F8EDD8; border-left:6px solid #E8A13C; }
+.co-key .cohead { color:#A66A14; }
+
+/* drill / rep block */
+.drill { border:2px solid #1B4332; border-radius:12px; margin:14px 0; background:#FFFFFF; }
+.drill .dhead { background:#1B4332; color:#FAF7F0; padding:9px 16px; font-size:13px;
+                font-weight:bold; letter-spacing:1.5px; border-radius:9px 9px 0 0; }
+.drill .dhead .reps { float:right; background:#E8A13C; color:#26241F; border-radius:9px;
+                      padding:1px 10px; font-size:11.5px; letter-spacing:1px; }
+.drill .dbody { padding:12px 16px 8px 16px; }
+.drill .dbody ol, .drill .dbody ul { margin-left:20px; }
+.drill .dbody li { font-size:13.5px; margin-bottom:5px; }
+
+/* pass/fail */
+.pf { width:100%; border-collapse:separate; border-spacing:10px 0; margin:12px -10px; }
+.pf td { width:50%; vertical-align:top; border-radius:10px; padding:12px 14px; }
+.pf .pass { background:#DCE8DF; border:2px solid #74A892; }
+.pf .fail { background:#F6E3DE; border:2px solid #C45B4C; }
+.pf .pfh { font-size:12px; font-weight:bold; letter-spacing:2px; margin-bottom:6px; }
+.pf .pass .pfh { color:#2D6A4F; } .pf .fail .pfh { color:#C45B4C; }
+.pf li { font-size:13px; margin-bottom:4px; }
+.pf ul { margin-left:18px; margin-bottom:2px; }
+
+/* fix-it block */
+.fixit { background:#26241F; color:#FAF7F0; border-radius:10px; padding:13px 16px; margin:13px 0; }
+.fixit .fh { color:#E5C45C; font-size:11px; font-weight:bold; letter-spacing:2px; margin-bottom:5px; }
+.fixit p { font-size:13px; color:#FAF7F0; margin-bottom:5px; }
+
+/* worksheets */
+.wline { border-bottom:1.6px solid #6B675C; height:30px; margin:8px 0; }
+.wlabel { font-size:11px; letter-spacing:1.5px; font-weight:bold; color:#6B675C;
+          text-transform:uppercase; margin-top:10px; }
+.wbox { border:1.6px solid #6B675C; border-radius:8px; min-height:64px; margin:8px 0; background:#FFFFFF; }
+.wgrid { width:100%; border-collapse:collapse; margin:10px 0; background:#FFFFFF; }
+.wgrid th { background:#1B4332; color:#FAF7F0; font-size:11px; letter-spacing:1px;
+            padding:8px 8px; text-align:left; }
+.wgrid td { border:1px solid #D8D2C4; height:34px; font-size:12.5px; padding:4px 8px; }
+
+/* stat row */
+.stats { width:100%; border-collapse:separate; border-spacing:10px 0; margin:14px -10px; }
+.stats td { background:#FFFFFF; border:2px solid #DCE8DF; border-radius:12px;
+            text-align:center; padding:14px 8px 10px 8px; width:33%; }
+.stats .n { font-family:'Roboto Slab',serif; font-size:30px; font-weight:bold; color:#1B4332; }
+.stats .l { font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; color:#6B675C; margin-top:3px; }
+
+/* pull quote */
+.pull { border-left:5px solid #E8A13C; padding:6px 0 6px 18px; margin:16px 0;
+        font-family:'Roboto Slab',serif; font-size:18px; line-height:1.45; color:#1B4332; }
+.pull .att { display:block; font-family:'Lato',sans-serif; font-size:11px; letter-spacing:1.5px;
+             color:#6B675C; margin-top:6px; text-transform:uppercase; }
+
+/* tables */
+.tbl { width:100%; border-collapse:collapse; margin:12px 0; background:#FFFFFF; }
+.tbl th { background:#1B4332; color:#FAF7F0; font-size:12px; letter-spacing:1px;
+          padding:9px 10px; text-align:left; }
+.tbl td { border:1px solid #D8D2C4; padding:8px 10px; font-size:13px; line-height:1.45;
+          vertical-align:top; }
+.tbl tr:nth-child(even) td { background:#FAF7F0; }
+
+/* check / cross lists */
+.cklist, .xlist { list-style:none; margin-left:0; }
+.cklist li, .xlist li { padding-left:30px; position:relative; margin-bottom:8px; }
+.cklist li:before { content:"\2713"; position:absolute; left:0; top:-1px; font-weight:bold;
+  color:#FFFFFF; background:#2D6A4F; border-radius:50%; width:20px; height:20px;
+  text-align:center; line-height:20px; font-size:12px; }
+.xlist li:before { content:"\2715"; position:absolute; left:0; top:-1px; font-weight:bold;
+  color:#FFFFFF; background:#C45B4C; border-radius:50%; width:20px; height:20px;
+  text-align:center; line-height:20px; font-size:12px; }
+
+/* day card header */
+.daybar { background:#1B4332; border-radius:12px; color:#FAF7F0; padding:14px 18px; margin-bottom:14px; }
+.daybar table { width:100%; border-collapse:collapse; }
+.daybar .dnum { font-family:'Roboto Slab',serif; font-size:30px; font-weight:bold; color:#E5C45C;
+                white-space:nowrap; padding-right:16px; }
+.daybar .dphase { font-size:10px; letter-spacing:2px; color:#74A892; text-transform:uppercase; }
+.daybar .dgoal { font-size:15.5px; font-weight:bold; line-height:1.35; }
+
+/* two-col helper (tables) */
+.cols { width:100%; border-collapse:separate; border-spacing:14px 0; margin:0 -14px; }
+.cols td { vertical-align:top; width:50%; }
+
+/* TOC */
+.tocrow { font-size:14px; margin-bottom:9px; position:relative; }
+.tocrow .t { background:#FAF7F0; padding-right:6px; position:relative; z-index:2; }
+.tocrow .pn { float:right; background:#FAF7F0; padding-left:6px; position:relative; z-index:2;
+              font-weight:bold; color:#1B4332; }
+.tocrow .dots { position:absolute; left:0; right:0; top:11px; border-bottom:2px dotted #D8D2C4; }
+.tocpart { font-family:'Roboto Slab',serif; font-size:16px; color:#1B4332; font-weight:bold;
+           margin:16px 0 8px 0; padding-bottom:4px; border-bottom:2px solid #1B4332; }
+.tocpart .pn { float:right; }
+
+/* part divider */
+.divider { background:#1B4332; color:#FAF7F0; }
+.divider .dvpad { padding:110px 84px; }
+.divider .dvnum { font-family:'Roboto Slab',serif; font-size:120px; color:#E8A13C;
+                  font-weight:bold; line-height:1; }
+.divider .dvkick { font-size:13px; letter-spacing:4px; color:#74A892; text-transform:uppercase;
+                   margin:10px 0 6px 0; }
+.divider h1 { color:#FAF7F0; font-size:44px; margin-bottom:22px; }
+.divider p { color:#DCE8DF; font-size:16px; }
+.divider .dvlist { margin-top:30px; border-top:2px solid #2D6A4F; padding-top:18px; }
+.divider .dvlist li { color:#DCE8DF; font-size:14.5px; margin-bottom:9px; list-style:none; }
+.divider .dvlist li:before { content:"\2192  "; color:#E8A13C; font-weight:bold; }
+
+/* glossary */
+.gitem { margin-bottom:13px; }
+.gitem .gterm { font-weight:bold; color:#1B4332; font-size:14.5px; }
+.gitem p { font-size:13px; margin-bottom:0; }
+
+/* misc */
+.center { text-align:center; }
+.figwrap { text-align:center; margin:12px 0; }
+.figcap { font-size:11px; color:#6B675C; letter-spacing:1px; text-transform:uppercase; margin-top:6px; }
+.badge { display:inline-block; background:#E8A13C; color:#26241F; border-radius:10px;
+         padding:2px 12px; font-size:11px; font-weight:bold; letter-spacing:1.5px; }
+.rule-amber { border:none; border-top:3px solid #E8A13C; width:64px; margin:14px 0; }
+</style></head><body><div class="page "><div class="pad"><div class="kicker">COMPONENT TEST &#183; TYPOGRAPHY + BLOCKS</div><h1>Every text component on one page</h1><p class="lead">This is the lead paragraph style. It runs a little larger so openers breathe.</p><p class="dropcap">This paragraph tests the drop cap. The first letter floats large and amber, and the following lines wrap around it the way a chapter opener should. Body text is Lato at 14.5px with relaxed leading for long reading sessions.</p><h2>A Roboto Slab section heading</h2><h3>An uppercase sub-heading</h3><div class="co co-note"><div class="cohead">&#9998; NOTE</div><p class="">A note callout with sage border.</p></div><div class="co co-warn"><div class="cohead">&#9888; CAREFUL</div><p class="">A warning callout with clay border.</p></div><div class="co co-key"><div class="cohead">&#9733; KEY IDEA</div><p class="">A key-idea callout with amber border.</p></div><div class="pull">&ldquo;Progress is a wave, not a staircase.&rdquo;<span class="att">The Green Zone Method</span></div><table class="stats"><tr><td><div class="n">5</div><div class="l">CARS TODAY</div></td><td><div class="n">3&#215;</div><div class="l">CLEAN REPS</div></td><td><div class="n">16</div><div class="l">MINUTES</div></td></tr></table><p class="small">Small print: educational use only; not veterinary advice.</p></div><div class="ptab" style="background:#74A892"><span>PART I</span></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">1</div></div></div><div class="page "><div class="pad"><h1>Blocks: drills, pass/fail, fix-it, lists, tables</h1><div class="drill"><div class="dhead">DRILL &#183; THE FOOD TEST<span class="reps">5 REPS</span></div><div class="dbody"><ol><li>Stand at your start distance. Wait for the dog to notice the trigger.</li><li>Offer one pea-sized treat at the nose.</li><li>Score the mouth: instant / slow / refused.</li></ol></div></div><table class="pf"><tr><td class="pass"><div class="pfh">&#10003; PASS — MOVE ON WHEN</div><ul><li>Dog eats instantly on 3 straight reps</li><li>Loose leash the whole time</li></ul></td><td class="fail"><div class="pfh">&#10005; STOP — BACK UP WHEN</div><ul><li>Dog refuses food twice</li><li>Any bark, lunge, or freeze</li></ul></td></tr></table><div class="fixit"><div class="fh">&#9889; IF IT GOES WRONG</div><p class="">Dog explodes mid-rep? U-turn, add two cars of distance, breathe, restart at the easier line.</p></div><ul class="cklist"><li>A checklist item</li><li>Another good thing</li></ul><ul class="xlist"><li>A thing this is NOT</li><li>Another myth</li></ul><table class="tbl"><tr><th>Symptom</th><th>Meaning</th><th>Do</th></tr><tr><td>Won't eat</td><td>Over threshold</td><td>Add distance</td></tr><tr><td>Eats slowly</td><td>Yellow zone</td><td>Hold or add 1 car</td></tr></table><div class="daybar"><table><tr><td class="dnum">DAY 7</td><td><div class="dphase">PHASE 2 &#183; ANCHOR</div><div class="dgoal">Install the loop on moving triggers at 6 cars</div></td></tr></table></div></div><div class="ptab" style="background:#E8A13C"><span>PART II</span></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">2</div></div></div><div class="page "><div class="pad"><h1>Worksheet components</h1><div class="wlabel">Dog's name</div><div class="wline"></div><div class="wlabel">Today's trigger + distance</div><div class="wline"></div><div class="wline"></div><div class="wlabel">Sketch your route (mark escapes with E)</div><div class="wbox" style="min-height:90px"></div><table class="wgrid"><tr><th style="width:8%">Rep</th><th style="width:32%">Trigger</th><th style="width:14%">Cars</th><th style="width:26%">Mouth score</th><th style="width:20%">Clean?</th></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></table><h2>TOC styles</h2><div class="tocpart">PART I &#8212; WHY EVERYTHING FAILED<span class="pn">9</span></div><div class="tocrow"><span class="t">The advice that made it worse</span><span class="pn">10</span><div class="dots"></div></div><div class="tocrow"><span class="t">Fear beats food: the line nobody drew</span><span class="pn">12</span><div class="dots"></div></div><div class="gitem"><span class="gterm">Threshold</span> — the distance at which your dog can notice a trigger and still think.</div><span class="badge">BONUS</span></div><div class="ptab" style="background:#2D6A4F"><span>WORKSHEETS</span></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">3</div></div></div><div class="page "><div class="pad"><h1>SVG check 1</h1></div><div class="figwrap"><svg width="560" height="400" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg">
+<rect width="560" height="400" rx="14" fill="#EFEAE0"/>
+<rect x="0" y="168" width="560" height="64" fill="#D8D2C4"/>
+<line x1="10" y1="200" x2="550" y2="200" stroke="#FFF" stroke-width="3" stroke-dasharray="18 14"/>
+<circle cx="455" cy="200" r="150" fill="#C45B4C" fill-opacity="0.22"/>
+<circle cx="455" cy="200" r="245" fill="#E5C45C" fill-opacity="0.25"/>
+<circle cx="455" cy="200" r="150" fill="none" stroke="#C45B4C" stroke-width="3"/>
+<circle cx="455" cy="200" r="245" fill="none" stroke="#E5C45C" stroke-width="3" stroke-dasharray="10 8"/>
+<rect x="8" y="8" width="206" height="384" rx="12" fill="#2D6A4F" fill-opacity="0.18"/>
+<rect x="8" y="8" width="206" height="384" rx="12" fill="none" stroke="#2D6A4F" stroke-width="3"/>
+<g transform="translate(455,196) scale(-1.15,1.15)"><ellipse cx="0" cy="0" rx="26" ry="13" fill="#C45B4C"/><circle cx="24" cy="-12" r="9" fill="#C45B4C"/><polygon points="20,-19 24,-28 28,-19" fill="#C45B4C"/><polygon points="29,-20 34,-28 36,-18" fill="#C45B4C"/><rect x="-18" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><rect x="-6" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><rect x="8" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><rect x="16" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><path d="M -24,-4 Q -38,-14 -34,-24" stroke="#C45B4C" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+<g transform="translate(96,250) scale(1.1,1.1)"><ellipse cx="0" cy="0" rx="26" ry="13" fill="#1B4332"/><circle cx="24" cy="-12" r="9" fill="#1B4332"/><polygon points="20,-19 24,-28 28,-19" fill="#1B4332"/><polygon points="29,-20 34,-28 36,-18" fill="#1B4332"/><rect x="-18" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="-6" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="8" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="16" y="8" width="5" height="14" rx="2" fill="#1B4332"/><path d="M -24,-4 Q -38,-14 -34,-24" stroke="#1B4332" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+<g transform="translate(150,262) scale(1.05)"><circle cx="0" cy="-46" r="9" fill="#26241F"/><rect x="-7" y="-36" width="14" height="30" rx="6" fill="#26241F"/><rect x="-7" y="-8" width="5" height="22" rx="2" fill="#26241F"/><rect x="2" y="-8" width="5" height="22" rx="2" fill="#26241F"/></g>
+<line x1="122" y1="244" x2="143" y2="232" stroke="#26241F" stroke-width="3"/>
+<rect x="30" y="28" width="150" height="30" rx="15" fill="#2D6A4F"/>
+<text x="105" y="48" font-family="Lato" font-size="15" font-weight="bold" fill="#FFF" text-anchor="middle">GREEN ZONE</text>
+<rect x="236" y="28" width="158" height="30" rx="15" fill="#E5C45C"/>
+<text x="315" y="48" font-family="Lato" font-size="15" font-weight="bold" fill="#26241F" text-anchor="middle">YELLOW ZONE</text>
+<rect x="412" y="28" width="120" height="30" rx="15" fill="#C45B4C"/>
+<text x="472" y="48" font-family="Lato" font-size="15" font-weight="bold" fill="#FFF" text-anchor="middle">RED ZONE</text>
+<text x="105" y="320" font-family="Lato" font-size="13" font-weight="bold" fill="#1B4332" text-anchor="middle">CAN THINK &#183; CAN EAT</text>
+<text x="105" y="338" font-family="Lato" font-size="13" font-weight="bold" fill="#1B4332" text-anchor="middle">CAN LEARN</text>
+<text x="315" y="320" font-family="Lato" font-size="13" font-weight="bold" fill="#8a6d1c" text-anchor="middle">STIFF &#183; LOCKED ON</text>
+<text x="315" y="338" font-family="Lato" font-size="13" font-weight="bold" fill="#8a6d1c" text-anchor="middle">EATS SLOWLY</text>
+<text x="472" y="320" font-family="Lato" font-size="13" font-weight="bold" fill="#C45B4C" text-anchor="middle">EXPLOSION &#183; NO FOOD</text>
+<text x="472" y="338" font-family="Lato" font-size="13" font-weight="bold" fill="#C45B4C" text-anchor="middle">NO LEARNING</text>
+<text x="276" y="385" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">EVERY DOG HAS A NUMBER. YOUR ONLY JOB IS TO FIND IT &#8212; THEN SHRINK IT.</text>
+</svg><div class="figcap">zone_map</div></div><div class="figwrap"><svg width="460" height="300" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+<rect width="460" height="300" rx="14" fill="#EFEAE0"/>
+<circle cx="230" cy="150" r="92" fill="none" stroke="#74A892" stroke-width="4" stroke-dasharray="12 9"/>
+<polygon points="230,49 218,67 242,67" fill="#74A892"/>
+<polygon points="230,251 218,233 242,233" fill="#74A892"/>
+<rect x="150" y="14" width="160" height="44" rx="10" fill="#1B4332"/>
+<text x="230" y="33" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">1. DOG SEES TRIGGER</text>
+<text x="230" y="50" font-family="Lato" font-size="11" fill="#DCE8DF" text-anchor="middle">(you say nothing)</text>
+<rect x="334" y="128" width="116" height="44" rx="10" fill="#2D6A4F"/>
+<text x="392" y="147" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">2. DOG LOOKS</text>
+<text x="392" y="164" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">BACK AT YOU</text>
+<rect x="150" y="242" width="160" height="44" rx="10" fill="#E8A13C"/>
+<text x="230" y="261" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">3. MARK &#8212; "YES!"</text>
+<text x="230" y="278" font-family="Lato" font-size="11" fill="#26241F" text-anchor="middle">the instant the head turns</text>
+<rect x="10" y="128" width="116" height="44" rx="10" fill="#1B4332"/>
+<text x="68" y="147" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">4. PAY AT</text>
+<text x="68" y="164" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">YOUR KNEE</text>
+<text x="230" y="142" font-family="Roboto Slab" font-size="17" font-weight="bold" fill="#1B4332" text-anchor="middle">THE LOOP</text>
+<text x="230" y="163" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">one rep &#8776; 5 seconds</text>
+</svg><div class="figcap">engage_loop</div></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">4</div></div></div><div class="page "><div class="pad"><h1>SVG check 2</h1></div><div class="figwrap"><svg width="460" height="270" viewBox="0 0 460 270" xmlns="http://www.w3.org/2000/svg">
+<rect width="460" height="270" rx="14" fill="#EFEAE0"/>
+<rect x="0" y="105" width="460" height="60" fill="#D8D2C4"/>
+<line x1="8" y1="135" x2="452" y2="135" stroke="#FFF" stroke-width="3" stroke-dasharray="16 12"/>
+<g transform="translate(392,130) scale(-1.0,1.0)"><ellipse cx="0" cy="0" rx="26" ry="13" fill="#C45B4C"/><circle cx="24" cy="-12" r="9" fill="#C45B4C"/><polygon points="20,-19 24,-28 28,-19" fill="#C45B4C"/><polygon points="29,-20 34,-28 36,-18" fill="#C45B4C"/><rect x="-18" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><rect x="-6" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><rect x="8" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><rect x="16" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><path d="M -24,-4 Q -38,-14 -34,-24" stroke="#C45B4C" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+<path d="M 290,135 L 200,135 Q 160,135 160,175 Q 160,215 200,215 L 300,215"
+  stroke="#2D6A4F" stroke-width="7" fill="none" stroke-linecap="round"/>
+<polygon points="300,201 300,229 326,215" fill="#2D6A4F"/>
+<g transform="translate(250,110) scale(0.9,0.9)"><ellipse cx="0" cy="0" rx="26" ry="13" fill="#1B4332"/><circle cx="24" cy="-12" r="9" fill="#1B4332"/><polygon points="20,-19 24,-28 28,-19" fill="#1B4332"/><polygon points="29,-20 34,-28 36,-18" fill="#1B4332"/><rect x="-18" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="-6" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="8" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="16" y="8" width="5" height="14" rx="2" fill="#1B4332"/><path d="M -24,-4 Q -38,-14 -34,-24" stroke="#1B4332" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+<g transform="translate(296,122) scale(0.95)"><circle cx="0" cy="-46" r="9" fill="#26241F"/><rect x="-7" y="-36" width="14" height="30" rx="6" fill="#26241F"/><rect x="-7" y="-8" width="5" height="22" rx="2" fill="#26241F"/><rect x="2" y="-8" width="5" height="22" rx="2" fill="#26241F"/></g>
+<rect x="22" y="18" width="190" height="56" rx="10" fill="#1B4332"/>
+<text x="117" y="40" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">"THIS WAY!" &#8212; happy voice,</text>
+<text x="117" y="58" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">turn YOUR body first</text>
+<text x="160" y="250" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">cross, arc, or reverse &#8212; any direction that adds distance</text>
+<rect x="330" y="30" width="108" height="26" rx="13" fill="#C45B4C"/>
+<text x="384" y="48" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">SURPRISE DOG</text>
+</svg><div class="figcap">uturn</div></div><div class="figwrap"><svg width="620" height="170" viewBox="0 0 620 170" xmlns="http://www.w3.org/2000/svg">
+<rect width="620" height="170" rx="14" fill="#EFEAE0"/>
+<text x="310" y="32" font-family="Roboto Slab" font-size="16" font-weight="bold" fill="#1B4332" text-anchor="middle">MEASURE IN PARKED CARS, NOT FEET</text>
+<text x="310" y="52" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">one parked car &#8776; 15 ft &#8212; you can count cars on any street, mid-walk, under stress</text>
+<g transform="translate(60,96)"><rect x="0" y="0" width="64" height="22" rx="8" fill="#2D6A4F"/><circle cx="14" cy="24" r="7" fill="#26241F"/><circle cx="50" cy="24" r="7" fill="#26241F"/><text x="32" y="-8" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">1</text></g><g transform="translate(148,96)"><rect x="0" y="0" width="64" height="22" rx="8" fill="#2D6A4F"/><circle cx="14" cy="24" r="7" fill="#26241F"/><circle cx="50" cy="24" r="7" fill="#26241F"/><text x="32" y="-8" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">2</text></g><g transform="translate(236,96)"><rect x="0" y="0" width="64" height="22" rx="8" fill="#2D6A4F"/><circle cx="14" cy="24" r="7" fill="#26241F"/><circle cx="50" cy="24" r="7" fill="#26241F"/><text x="32" y="-8" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">3</text></g><g transform="translate(324,96)"><rect x="0" y="0" width="64" height="22" rx="8" fill="#E5C45C"/><circle cx="14" cy="24" r="7" fill="#26241F"/><circle cx="50" cy="24" r="7" fill="#26241F"/><text x="32" y="-8" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">4</text></g><g transform="translate(412,96)"><rect x="0" y="0" width="64" height="22" rx="8" fill="#E5C45C"/><circle cx="14" cy="24" r="7" fill="#26241F"/><circle cx="50" cy="24" r="7" fill="#26241F"/><text x="32" y="-8" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">5</text></g><g transform="translate(500,96)"><rect x="0" y="0" width="64" height="22" rx="8" fill="#C45B4C"/><circle cx="14" cy="24" r="7" fill="#26241F"/><circle cx="50" cy="24" r="7" fill="#26241F"/><text x="32" y="-8" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">6</text></g>
+<text x="310" y="158" font-family="Lato" font-size="12" font-weight="bold" fill="#1B4332" text-anchor="middle">"Cooper's number is 5 cars" beats "Cooper's threshold is 75 feet"</text>
+</svg><div class="figcap">carlength</div></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">5</div></div></div><div class="page "><div class="pad"><h1>SVG check 3</h1></div><div class="figwrap"><svg width="520" height="330" viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg">
+<rect width="520" height="330" rx="14" fill="#EFEAE0"/>
+<g transform="translate(250,195) scale(2.6,2.6)"><ellipse cx="0" cy="0" rx="26" ry="13" fill="#1B4332"/><circle cx="24" cy="-12" r="9" fill="#1B4332"/><polygon points="20,-19 24,-28 28,-19" fill="#1B4332"/><polygon points="29,-20 34,-28 36,-18" fill="#1B4332"/><rect x="-18" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="-6" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="8" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="16" y="8" width="5" height="14" rx="2" fill="#1B4332"/><path d="M -24,-4 Q -38,-14 -34,-24" stroke="#1B4332" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+<line x1="312" y1="125" x2="398" y2="68" stroke="#E8A13C" stroke-width="2.5"/>
+<circle cx="312" cy="125" r="5" fill="#E8A13C"/>
+<text x="404" y="62" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">EARS: pinned flat or</text>
+<text x="404" y="78" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">locked hard forward</text>
+<line x1="318" y1="168" x2="402" y2="168" stroke="#E8A13C" stroke-width="2.5"/>
+<circle cx="318" cy="168" r="5" fill="#E8A13C"/>
+<text x="408" y="164" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">MOUTH: closes shut.</text>
+<text x="408" y="180" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">Panting stops = alarm</text>
+<line x1="160" y1="172" x2="84" y2="110" stroke="#E8A13C" stroke-width="2.5"/>
+<circle cx="160" cy="172" r="5" fill="#E8A13C"/>
+<text x="20" y="88" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">TAIL: high + stiff +</text>
+<text x="20" y="104" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">slow wag = loading</text>
+<line x1="218" y1="230" x2="130" y2="280" stroke="#E8A13C" stroke-width="2.5"/>
+<circle cx="218" cy="230" r="5" fill="#E8A13C"/>
+<text x="36" y="296" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">WEIGHT: shifts forward,</text>
+<text x="36" y="312" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">front legs braced</text>
+<line x1="330" y1="225" x2="404" y2="268" stroke="#E8A13C" stroke-width="2.5"/>
+<circle cx="330" cy="225" r="5" fill="#E8A13C"/>
+<text x="352" y="288" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">BODY: freeze. The 2-second</text>
+<text x="352" y="304" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">statue before the bark</text>
+<rect x="150" y="14" width="220" height="28" rx="14" fill="#1B4332"/>
+<text x="260" y="33" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">THE 5 LOADING SIGNALS</text>
+</svg><div class="figcap">body_language</div></div><div class="figwrap"><svg width="470" height="320" viewBox="0 0 470 320" xmlns="http://www.w3.org/2000/svg">
+<rect width="470" height="320" rx="14" fill="#EFEAE0"/>
+<path d="M 150,90 L 170,260 L 290,260 L 310,90 Z" fill="#DCE8DF" stroke="#1B4332" stroke-width="4"/>
+<path d="M 162,170 L 173,255 L 287,255 L 298,170 Z" fill="#74A892"/>
+<line x1="156" y1="130" x2="304" y2="130" stroke="#C45B4C" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="318" y="135" font-family="Lato" font-size="12" font-weight="bold" fill="#C45B4C">OVERFLOW =</text>
+<text x="318" y="151" font-family="Lato" font-size="12" font-weight="bold" fill="#C45B4C">THE EXPLOSION</text>
+<g font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">
+<text x="38" y="60">skipped breakfast</text><text x="150" y="40">trash truck</text>
+<text x="262" y="40">dog behind fence</text><text x="392" y="60">doorbell</text>
+</g>
+<line x1="80" y1="66" x2="180" y2="100" stroke="#6B675C" stroke-width="2"/>
+<line x1="185" y1="46" x2="215" y2="86" stroke="#6B675C" stroke-width="2"/>
+<line x1="300" y1="46" x2="262" y2="86" stroke="#6B675C" stroke-width="2"/>
+<line x1="400" y1="66" x2="288" y2="100" stroke="#6B675C" stroke-width="2"/>
+<path d="M 290,260 Q 310,290 350,292" stroke="#2D6A4F" stroke-width="5" fill="none"/>
+<text x="358" y="297" font-family="Lato" font-size="12.5" font-weight="bold" fill="#2D6A4F">THE DRAIN:</text>
+<text x="358" y="312" font-family="Lato" font-size="11.5" fill="#2D6A4F">sleep, sniffing, rest days</text>
+<text x="230" y="300" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">the bucket drains slowly &#8212;</text>
+<text x="120" y="300" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">up to 48&#8211;72 hours</text>
+<rect x="135" y="8" width="200" height="26" rx="13" fill="#1B4332"/>
+<text x="235" y="26" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">TRIGGER STACKING</text>
+</svg><div class="figcap">stress_bucket</div></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">6</div></div></div><div class="page "><div class="pad"><h1>SVG check 4</h1></div><div class="figwrap"><svg width="560" height="210" viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
+<rect width="560" height="210" rx="14" fill="#EFEAE0"/>
+<text x="280" y="36" font-family="Roboto Slab" font-size="17" font-weight="bold" fill="#1B4332" text-anchor="middle">THE 3-FOR-3 RULE</text>
+<g transform="translate(120,92)"><circle r="26" fill="#2D6A4F"/><text y="9" font-family="Lato" font-size="26" font-weight="bold" fill="#FFF" text-anchor="middle">&#10003;</text><text y="48" font-family="Lato" font-size="11.5" font-weight="bold" fill="#26241F" text-anchor="middle">CLEAN REP 1</text></g><g transform="translate(200,92)"><circle r="26" fill="#2D6A4F"/><text y="9" font-family="Lato" font-size="26" font-weight="bold" fill="#FFF" text-anchor="middle">&#10003;</text><text y="48" font-family="Lato" font-size="11.5" font-weight="bold" fill="#26241F" text-anchor="middle">CLEAN REP 2</text></g><g transform="translate(280,92)"><circle r="26" fill="#2D6A4F"/><text y="9" font-family="Lato" font-size="26" font-weight="bold" fill="#FFF" text-anchor="middle">&#10003;</text><text y="48" font-family="Lato" font-size="11.5" font-weight="bold" fill="#26241F" text-anchor="middle">CLEAN REP 3</text></g>
+<line x1="370" y1="92" x2="430" y2="92" stroke="#E8A13C" stroke-width="6"/>
+<polygon points="430,78 430,106 456,92" fill="#E8A13C"/>
+<g transform="translate(498,92)"><circle r="30" fill="#1B4332"/>
+<text y="-2" font-family="Lato" font-size="12" font-weight="bold" fill="#E5C45C" text-anchor="middle">&#8722;1 CAR</text>
+<text y="14" font-family="Lato" font-size="10.5" fill="#FFF" text-anchor="middle">closer</text></g>
+<text x="280" y="186" font-family="Lato" font-size="12.5" fill="#6B675C" text-anchor="middle">3 clean loops at this distance &#8212; on different triggers &#8212; before you earn one car-length. Miss one? Stay.</text>
+</svg><div class="figcap">three_for_three</div></div><div class="figwrap"><svg width="520" height="240" viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+<rect width="520" height="240" rx="14" fill="#EFEAE0"/>
+<rect x="18" y="16" width="230" height="208" rx="12" fill="#F6E3DE"/>
+<rect x="272" y="16" width="230" height="208" rx="12" fill="#DCE8DF"/>
+<g transform="translate(80,150) scale(1.1)"><circle cx="0" cy="-46" r="9" fill="#26241F"/><rect x="-7" y="-36" width="14" height="30" rx="6" fill="#26241F"/><rect x="-7" y="-8" width="5" height="22" rx="2" fill="#26241F"/><rect x="2" y="-8" width="5" height="22" rx="2" fill="#26241F"/></g><g transform="translate(190,140) scale(0.95,0.95)"><ellipse cx="0" cy="0" rx="26" ry="13" fill="#C45B4C"/><circle cx="24" cy="-12" r="9" fill="#C45B4C"/><polygon points="20,-19 24,-28 28,-19" fill="#C45B4C"/><polygon points="29,-20 34,-28 36,-18" fill="#C45B4C"/><rect x="-18" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><rect x="-6" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><rect x="8" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><rect x="16" y="8" width="5" height="14" rx="2" fill="#C45B4C"/><path d="M -24,-4 Q -38,-14 -34,-24" stroke="#C45B4C" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+<line x1="87" y1="118" x2="166" y2="132" stroke="#C45B4C" stroke-width="4"/>
+<text x="133" y="206" font-family="Lato" font-size="13" font-weight="bold" fill="#C45B4C" text-anchor="middle">TIGHT LINE = pressure,</text>
+<text x="133" y="222" font-family="Lato" font-size="13" font-weight="bold" fill="#C45B4C" text-anchor="middle">frustration, opposition reflex</text>
+<g transform="translate(334,150) scale(1.1)"><circle cx="0" cy="-46" r="9" fill="#26241F"/><rect x="-7" y="-36" width="14" height="30" rx="6" fill="#26241F"/><rect x="-7" y="-8" width="5" height="22" rx="2" fill="#26241F"/><rect x="2" y="-8" width="5" height="22" rx="2" fill="#26241F"/></g><g transform="translate(444,140) scale(0.95,0.95)"><ellipse cx="0" cy="0" rx="26" ry="13" fill="#1B4332"/><circle cx="24" cy="-12" r="9" fill="#1B4332"/><polygon points="20,-19 24,-28 28,-19" fill="#1B4332"/><polygon points="29,-20 34,-28 36,-18" fill="#1B4332"/><rect x="-18" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="-6" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="8" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="16" y="8" width="5" height="14" rx="2" fill="#1B4332"/><path d="M -24,-4 Q -38,-14 -34,-24" stroke="#1B4332" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+<path d="M 341,118 Q 380,175 420,135" stroke="#2D6A4F" stroke-width="4" fill="none"/>
+<text x="387" y="206" font-family="Lato" font-size="13" font-weight="bold" fill="#2D6A4F" text-anchor="middle">LOOSE "J" = slack absorbs</text>
+<text x="387" y="222" font-family="Lato" font-size="13" font-weight="bold" fill="#2D6A4F" text-anchor="middle">startle; dog can choose calm</text>
+<rect x="92" y="28" width="84" height="24" rx="12" fill="#C45B4C"/>
+<text x="134" y="45" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">&#10005; WRONG</text>
+<rect x="348" y="28" width="84" height="24" rx="12" fill="#2D6A4F"/>
+<text x="390" y="45" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">&#10003; RIGHT</text>
+</svg><div class="figcap">leash_J</div></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">7</div></div></div><div class="page "><div class="pad"><h1>SVG check 5</h1></div><div class="figwrap"><svg width="560" height="380" viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg">
+<rect width="560" height="380" rx="14" fill="#EFEAE0"/>
+<rect x="190" y="18" width="180" height="40" rx="10" fill="#1B4332"/>
+<text x="280" y="43" font-family="Lato" font-size="14" font-weight="bold" fill="#FFF" text-anchor="middle">YOU SPOT A TRIGGER</text>
+<line x1="280" y1="58" x2="280" y2="86" stroke="#26241F" stroke-width="3"/>
+<polygon points="272,84 288,84 280,96" fill="#26241F"/>
+<polygon points="280,98 400,140 280,182 160,140" fill="#E5C45C"/>
+<text x="280" y="135" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">Is the dog still</text>
+<text x="280" y="152" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">in the Green Zone?</text>
+<line x1="160" y1="140" x2="92" y2="140" stroke="#26241F" stroke-width="3"/>
+<polygon points="94,132 94,148 82,140" fill="#26241F"/>
+<text x="126" y="128" font-family="Lato" font-size="12" font-weight="bold" fill="#2D6A4F">YES</text>
+<rect x="14" y="170" width="156" height="64" rx="10" fill="#2D6A4F"/>
+<text x="92" y="196" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">WORK THE LOOP</text>
+<text x="92" y="214" font-family="Lato" font-size="11.5" fill="#DCE8DF" text-anchor="middle">see &#8594; look back &#8594; yes &#8594; pay</text>
+<line x1="400" y1="140" x2="468" y2="140" stroke="#26241F" stroke-width="3"/>
+<polygon points="466,132 466,148 478,140" fill="#26241F"/>
+<text x="424" y="128" font-family="Lato" font-size="12" font-weight="bold" fill="#C45B4C">NO</text>
+<rect x="396" y="170" width="150" height="64" rx="10" fill="#E8A13C"/>
+<text x="471" y="196" font-family="Lato" font-size="13" font-weight="bold" fill="#26241F" text-anchor="middle">EMERGENCY U-TURN</text>
+<text x="471" y="214" font-family="Lato" font-size="11.5" fill="#26241F" text-anchor="middle">add distance FIRST, fast</text>
+<line x1="471" y1="234" x2="471" y2="262" stroke="#26241F" stroke-width="3"/>
+<polygon points="463,260 479,260 471,272" fill="#26241F"/>
+<rect x="396" y="274" width="150" height="56" rx="10" fill="#1B4332"/>
+<text x="471" y="297" font-family="Lato" font-size="12.5" font-weight="bold" fill="#FFF" text-anchor="middle">re-enter Green Zone,</text>
+<text x="471" y="314" font-family="Lato" font-size="12.5" font-weight="bold" fill="#FFF" text-anchor="middle">THEN work the loop</text>
+<rect x="14" y="274" width="156" height="56" rx="10" fill="#DCE8DF" stroke="#2D6A4F" stroke-width="2"/>
+<text x="92" y="297" font-family="Lato" font-size="12.5" font-weight="bold" fill="#1B4332" text-anchor="middle">explosion anyway?</text>
+<text x="92" y="314" font-family="Lato" font-size="12.5" font-weight="bold" fill="#1B4332" text-anchor="middle">&#8594; Recovery Script, p.62</text>
+<line x1="92" y1="234" x2="92" y2="272" stroke="#26241F" stroke-width="3" stroke-dasharray="7 6"/>
+</svg><div class="figcap">decision_flow</div></div><div class="figwrap"><svg width="560" height="230" viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+<rect width="560" height="230" rx="14" fill="#EFEAE0"/>
+<text x="280" y="38" font-family="Roboto Slab" font-size="17" font-weight="bold" fill="#1B4332" text-anchor="middle">THE GREEN ZONE METHOD &#8212; THREE PHASES, 21 DAYS</text>
+<g transform="translate(20,60)"><rect width="160" height="120" rx="14" fill="#1B4332"/><text x="18" y="40" font-family="Roboto Slab" font-size="30" font-weight="bold" fill="#E5C45C">01</text><text x="18" y="72" font-family="Lato" font-size="20" font-weight="bold" fill="#FFF">MAP</text><text x="18" y="96" font-family="Lato" font-size="11.5" fill="#DCE8DF">find your dog's number</text></g><polygon points="182,120 182,100 202,110" fill="#26241F"/><g transform="translate(204,60)"><rect width="160" height="120" rx="14" fill="#2D6A4F"/><text x="18" y="40" font-family="Roboto Slab" font-size="30" font-weight="bold" fill="#E5C45C">02</text><text x="18" y="72" font-family="Lato" font-size="20" font-weight="bold" fill="#FFF">ANCHOR</text><text x="18" y="96" font-family="Lato" font-size="11.5" fill="#DCE8DF">install the loop + U-turn</text></g><polygon points="366,120 366,100 386,110" fill="#26241F"/><g transform="translate(388,60)"><rect width="160" height="120" rx="14" fill="#E8A13C"/><text x="18" y="40" font-family="Roboto Slab" font-size="30" font-weight="bold" fill="#7A4F0E">03</text><text x="18" y="72" font-family="Lato" font-size="20" font-weight="bold" fill="#26241F">SHRINK</text><text x="18" y="96" font-family="Lato" font-size="11.5" fill="#26241F">close in, one car at a time</text></g>
+<text x="280" y="212" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">Days 1&#8211;5: Map &#183; Days 6&#8211;12: Anchor &#183; Days 13&#8211;21: Shrink</text>
+</svg><div class="figcap">method_phases</div></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">8</div></div></div><div class="page "><div class="pad"><h1>SVG check 6</h1></div><div class="figwrap"><svg width="560" height="200" viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+<rect width="560" height="200" rx="14" fill="#EFEAE0"/>
+<text x="280" y="34" font-family="Roboto Slab" font-size="16" font-weight="bold" fill="#1B4332" text-anchor="middle">THE FOOD TEST &#8212; YOUR DOG'S MOUTH IS THE GAUGE</text>
+<g transform="translate(22,52)"><rect width="156" height="104" rx="12" fill="#FFF" stroke="#2D6A4F" stroke-width="3"/><circle cx="32" cy="34" r="16" fill="#2D6A4F"/><text x="32" y="40" font-family="Lato" font-size="15" font-weight="bold" fill="#FFF" text-anchor="middle">1</text><text x="58" y="32" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">EATS INSTANTLY</text><text x="58" y="48" font-family="Lato" font-size="10.5" fill="#6B675C">soft + fast grab</text><rect x="16" y="66" width="124" height="24" rx="12" fill="#2D6A4F"/><text x="78" y="83" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">= GREEN ZONE</text></g><g transform="translate(202,52)"><rect width="156" height="104" rx="12" fill="#FFF" stroke="#B89A2E" stroke-width="3"/><circle cx="32" cy="34" r="16" fill="#B89A2E"/><text x="32" y="40" font-family="Lato" font-size="15" font-weight="bold" fill="#FFF" text-anchor="middle">2</text><text x="58" y="32" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">EATS SLOWLY</text><text x="58" y="48" font-family="Lato" font-size="10.5" fill="#6B675C">hard mouth, distracted</text><rect x="16" y="66" width="124" height="24" rx="12" fill="#B89A2E"/><text x="78" y="83" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">= YELLOW ZONE</text></g><g transform="translate(382,52)"><rect width="156" height="104" rx="12" fill="#FFF" stroke="#C45B4C" stroke-width="3"/><circle cx="32" cy="34" r="16" fill="#C45B4C"/><text x="32" y="40" font-family="Lato" font-size="15" font-weight="bold" fill="#FFF" text-anchor="middle">3</text><text x="58" y="32" font-family="Lato" font-size="12.5" font-weight="bold" fill="#26241F">WON'T EAT</text><text x="58" y="48" font-family="Lato" font-size="10.5" fill="#6B675C">head locked on trigger</text><rect x="16" y="66" width="124" height="24" rx="12" fill="#C45B4C"/><text x="78" y="83" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">= RED ZONE</text></g>
+<text x="280" y="184" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">offer one pea-sized treat at the moment the dog notices a trigger &#8212; the answer IS the zone</text>
+</svg><div class="figcap">food_test</div></div><div class="figwrap"><svg width="560" height="340" viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg">
+<rect width="560" height="340" rx="14" fill="#EFEAE0"/>
+<g fill="#D8D2C4">
+<rect x="0" y="80" width="560" height="36"/><rect x="0" y="210" width="560" height="36"/>
+<rect x="120" y="0" width="34" height="340"/><rect x="320" y="0" width="34" height="340"/>
+</g>
+<path d="M 40,300 L 40,228 L 137,228 L 137,98 L 337,98 L 337,228 L 470,228"
+ stroke="#2D6A4F" stroke-width="6" fill="none" stroke-dasharray="14 9" stroke-linecap="round"/>
+<circle cx="40" cy="300" r="14" fill="#1B4332"/>
+<text x="40" y="305" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">A</text>
+<circle cx="470" cy="228" r="14" fill="#E8A13C"/>
+<text x="470" y="233" font-family="Lato" font-size="12" font-weight="bold" fill="#26241F" text-anchor="middle">B</text>
+<g transform="translate(210,40)"><rect x="-12" y="-12" width="24" height="24" rx="5" fill="#C45B4C"/>
+<text y="6" font-family="Lato" font-size="15" font-weight="bold" fill="#FFF" text-anchor="middle">!</text></g>
+<text x="240" y="46" font-family="Lato" font-size="11.5" font-weight="bold" fill="#C45B4C">yard with fence dog &#8212; avoid</text>
+<g transform="translate(430,60)"><rect x="-12" y="-12" width="24" height="24" rx="5" fill="#C45B4C"/>
+<text y="6" font-family="Lato" font-size="15" font-weight="bold" fill="#FFF" text-anchor="middle">!</text></g>
+<text x="380" y="36" font-family="Lato" font-size="11.5" font-weight="bold" fill="#C45B4C">dog-park corner</text>
+<g transform="translate(80,160)"><circle r="12" fill="#2D6A4F"/><text y="5" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">E</text></g>
+<text x="20" y="138" font-family="Lato" font-size="11.5" font-weight="bold" fill="#2D6A4F">escape: alley gap</text>
+<g transform="translate(395,260)"><circle r="12" fill="#2D6A4F"/><text y="5" font-family="Lato" font-size="13" font-weight="bold" fill="#FFF" text-anchor="middle">E</text></g>
+<text x="350" y="290" font-family="Lato" font-size="11.5" font-weight="bold" fill="#2D6A4F">escape: church lot</text>
+<rect x="155" y="306" width="250" height="24" rx="12" fill="#1B4332"/>
+<text x="280" y="323" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">PLAN THE ROUTE LIKE A HEIST</text>
+</svg><div class="figcap">route_map</div></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">9</div></div></div><div class="page "><div class="pad"><h1>SVG check 7</h1></div><div class="figwrap"><svg width="560" height="240" viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+<rect width="560" height="240" rx="14" fill="#EFEAE0"/>
+<line x1="60" y1="190" x2="520" y2="190" stroke="#26241F" stroke-width="2.5"/>
+<line x1="60" y1="190" x2="60" y2="36" stroke="#26241F" stroke-width="2.5"/>
+<path d="M 60,168 L 120,166 L 138,60 Q 150,44 162,68 Q 220,140 300,158 Q 400,172 520,166"
+ stroke="#C45B4C" stroke-width="5" fill="none"/>
+<line x1="60" y1="150" x2="520" y2="150" stroke="#2D6A4F" stroke-width="3" stroke-dasharray="9 7"/>
+<text x="66" y="142" font-family="Lato" font-size="11.5" font-weight="bold" fill="#2D6A4F">baseline (can learn below this line)</text>
+<circle cx="138" cy="60" r="7" fill="#C45B4C"/>
+<text x="152" y="52" font-family="Lato" font-size="12" font-weight="bold" fill="#C45B4C">the explosion</text>
+<text x="290" y="214" font-family="Lato" font-size="12" font-weight="bold" fill="#26241F" text-anchor="middle">stress chemistry takes 24&#8211;72 HOURS to drain &#8212; not minutes</text>
+<text x="40" y="120" font-family="Lato" font-size="11" fill="#6B675C" transform="rotate(-90 40 120)">AROUSAL</text>
+<text x="160" y="186" font-family="Lato" font-size="10.5" fill="#6B675C">hour 0</text>
+<text x="300" y="186" font-family="Lato" font-size="10.5" fill="#6B675C">day 1</text>
+<text x="470" y="186" font-family="Lato" font-size="10.5" fill="#6B675C">day 2&#8211;3</text>
+<rect x="330" y="52 " width="190" height="58" rx="10" fill="#1B4332"/>
+<text x="425" y="76" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">after a blow-up: 48-hour</text>
+<text x="425" y="94" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">quiet protocol (p. 63)</text>
+</svg><div class="figcap">recovery_curve</div></div><div class="figwrap"><svg width="460" height="250" viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg">
+<rect width="460" height="250" rx="14" fill="#EFEAE0"/>
+<g transform="translate(150,170) scale(1.5)"><circle cx="0" cy="-46" r="9" fill="#26241F"/><rect x="-7" y="-36" width="14" height="30" rx="6" fill="#26241F"/><rect x="-7" y="-8" width="5" height="22" rx="2" fill="#26241F"/><rect x="2" y="-8" width="5" height="22" rx="2" fill="#26241F"/></g>
+<g transform="translate(280,168) scale(1.25,1.25)"><ellipse cx="0" cy="0" rx="26" ry="13" fill="#1B4332"/><circle cx="24" cy="-12" r="9" fill="#1B4332"/><polygon points="20,-19 24,-28 28,-19" fill="#1B4332"/><polygon points="29,-20 34,-28 36,-18" fill="#1B4332"/><rect x="-18" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="-6" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="8" y="8" width="5" height="14" rx="2" fill="#1B4332"/><rect x="16" y="8" width="5" height="14" rx="2" fill="#1B4332"/><path d="M -24,-4 Q -38,-14 -34,-24" stroke="#1B4332" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+<circle cx="163" cy="120" r="10" fill="#E8A13C"/>
+<text x="185" y="112" font-family="Lato" font-size="12" font-weight="bold" fill="#26241F">1. hand at your CHEST between reps</text>
+<circle cx="160" cy="158" r="10" fill="#E8A13C"/>
+<text x="185" y="155" font-family="Lato" font-size="12" font-weight="bold" fill="#26241F">2. deliver at the SEAM of your pants</text>
+<circle cx="218" cy="196" r="10" fill="#E8A13C"/>
+<text x="240" y="220" font-family="Lato" font-size="12" font-weight="bold" fill="#26241F">3. pay AT THE KNEE &#8212; dog turns fully away</text>
+<text x="230" y="36" font-family="Roboto Slab" font-size="15" font-weight="bold" fill="#1B4332" text-anchor="middle">TREAT DELIVERY = STEERING</text>
+<text x="230" y="56" font-family="Lato" font-size="11.5" fill="#6B675C" text-anchor="middle">where the food appears decides where the dog's eyes go next</text>
+</svg><div class="figcap">treat_magnet</div></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">10</div></div></div><div class="page "><div class="pad"><h1>SVG check 8</h1></div><div class="figwrap"><svg width="460" height="220" viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="460" height="220" rx="14" fill="#EFEAE0"/>
+<rect x="24" y="60" width="120" height="110" rx="12" fill="#2D6A4F"/>
+<text x="84" y="100" font-family="Roboto Slab" font-size="26" font-weight="bold" fill="#FFF" text-anchor="middle">3 min</text>
+<text x="84" y="124" font-family="Lato" font-size="11.5" fill="#DCE8DF" text-anchor="middle">sniff + settle</text>
+<text x="84" y="140" font-family="Lato" font-size="11.5" fill="#DCE8DF" text-anchor="middle">(decompress in)</text>
+<rect x="170" y="48" width="120" height="122" rx="12" fill="#1B4332"/>
+<text x="230" y="92" font-family="Roboto Slab" font-size="26" font-weight="bold" fill="#E5C45C" text-anchor="middle">10 min</text>
+<text x="230" y="116" font-family="Lato" font-size="11.5" fill="#DCE8DF" text-anchor="middle">the work:</text>
+<text x="230" y="132" font-family="Lato" font-size="11.5" fill="#DCE8DF" text-anchor="middle">loops in the zone</text>
+<rect x="316" y="60" width="120" height="110" rx="12" fill="#E8A13C"/>
+<text x="376" y="100" font-family="Roboto Slab" font-size="26" font-weight="bold" fill="#26241F" text-anchor="middle">3 min</text>
+<text x="376" y="124" font-family="Lato" font-size="11.5" fill="#26241F" text-anchor="middle">sniff walk out</text>
+<text x="376" y="140" font-family="Lato" font-size="11.5" fill="#26241F" text-anchor="middle">(end on grass)</text>
+<text x="230" y="32" font-family="Roboto Slab" font-size="15" font-weight="bold" fill="#1B4332" text-anchor="middle">A SESSION IS 16 MINUTES. THAT'S THE WHOLE JOB.</text>
+<text x="230" y="198" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">short and clean beats long and messy &#8212; every single time</text>
+</svg><div class="figcap">session_clock</div></div><div class="figwrap"><svg width="560" height="220" viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="560" height="220" rx="14" fill="#EFEAE0"/>
+<line x1="50" y1="180" x2="530" y2="180" stroke="#26241F" stroke-width="2.5"/>
+<path d="M 50,150 Q 90,120 110,140 Q 140,165 170,118 Q 200,88 225,128 Q 250,158 285,96 Q 310,70 340,108 Q 370,140 410,76 Q 440,52 480,70 Q 510,80 530,58"
+ stroke="#2D6A4F" stroke-width="5" fill="none"/>
+<line x1="50" y1="150" x2="530" y2="58" stroke="#E8A13C" stroke-width="3" stroke-dasharray="10 8"/>
+<circle cx="170" cy="118" r="6" fill="#2D6A4F"/><circle cx="225" cy="128" r="6" fill="#C45B4C"/>
+<text x="238" y="146" font-family="Lato" font-size="11.5" font-weight="bold" fill="#C45B4C">a bad day</text>
+<text x="300" y="36" font-family="Roboto Slab" font-size="15" font-weight="bold" fill="#1B4332" text-anchor="middle">PROGRESS IS A WAVE, NOT A STAIRCASE</text>
+<text x="290" y="206" font-family="Lato" font-size="12" fill="#6B675C" text-anchor="middle">judge the WEEK's average distance, never the day &#8212; that's what the logs are for</text>
+</svg><div class="figcap">progress_wave</div></div><div class="chrome"><div class="rule"></div><div class="brand">THE GREEN ZONE METHOD</div><div class="mid">CALMWALK</div><div class="pno">11</div></div></div><div class="page divider"><div class="dvpad"><div class="dvnum">01</div><div class="dvkick">PART ONE</div><h1>Why Everything Failed</h1><p>Not you. The advice. Here is the mechanism under every failed fix.</p><ul class="dvlist"><li>The Exposure Trap</li><li>Fear beats food</li><li>Trigger stacking</li></ul></div></div></body></html>
