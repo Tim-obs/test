@@ -1,6 +1,6 @@
 {
-  "phase": 3,
-  "phase_name": "product-build-complete",
+  "phase": 4,
+  "phase_name": "funnel-pages-complete",
   "completed": [
     "preflight-checks",
     "render-toolchain-install",
@@ -11,7 +11,9 @@
     "fe-book-75pp-rendered-and-qa",
     "u1-toolkit-36pp",
     "u2-hardcases-41pp",
-    "phase3-gate-passed"
+    "phase3-gate-passed",
+    "six-pages-built",
+    "mobile-390px-screenshots-approved"
   ],
   "artifacts": [
     "00-preflight/PREFLIGHT.md",
@@ -19,7 +21,13 @@
     "02-offer/offer-map.md",
     "03-products/CalmWalk-The-21-Day-Calm-Walks-Plan.pdf",
     "03-products/CalmWalk-Toolkit.pdf",
-    "03-products/CalmWalk-Hard-Cases-Manual.pdf"
+    "03-products/CalmWalk-Hard-Cases-Manual.pdf",
+    "04-pages/p1-sales.html",
+    "04-pages/p2-checkout.html",
+    "04-pages/p3-upsell1.html",
+    "04-pages/p4-downsell.html",
+    "04-pages/p5-upsell2.html",
+    "04-pages/p6-thankyou.html"
   ],
   "blockers": [
     "GHL_PIT_TOKEN env var not set",
@@ -28,8 +36,8 @@
     "GHL_LOCATION empty \u2014 operator must name sub-account and confirm staging vs live",
     "SUPPORT_EMAIL and FUNNEL_DOMAIN unset"
   ],
-  "gate": "GREEN through Phase 3",
-  "gate_note": "3 QA'd PDFs: FE 75pp / U1 36pp / U2 41pp (mins 70/35/40). Next: Phase 4 funnel pages.",
+  "gate": "GREEN through Phase 4",
+  "gate_note": "6 single-file mobile-first pages with IMG/URL tokens; gate screenshots in /evidence. Next: Phase 5 creative.",
   "variables": {
     "NICHE": "PICK",
     "BRAND": "AUTO",
