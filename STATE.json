@@ -1,0 +1,28 @@
+{
+  "phase": 0,
+  "phase_name": "preflight",
+  "completed": ["preflight-checks", "render-toolchain-install", "higgsfield-connectivity", "preflight-report"],
+  "artifacts": ["00-preflight/PREFLIGHT.md"],
+  "blockers": [
+    "GHL_PIT_TOKEN env var not set",
+    "GHL API and app domains blocked by environment network policy (403 via egress proxy)",
+    "No logged-in Chrome profile / no browsers in cloud container — GHL builder automation impossible here",
+    "GHL_LOCATION empty — operator must name sub-account and confirm staging vs live",
+    "SUPPORT_EMAIL and FUNNEL_DOMAIN unset"
+  ],
+  "gate": "RED-PARTIAL",
+  "gate_note": "Phases 1-5 executable locally; Phases 6-7 blocked. Awaiting operator decision on partial proceed.",
+  "variables": {
+    "NICHE": "PICK",
+    "BRAND": "AUTO",
+    "PRICE_FE": 27,
+    "PRICE_UPSELL1": 97,
+    "PRICE_UPSELL2": 47,
+    "PRICE_DOWNSELL": 47,
+    "DELIVERY": "EMAIL",
+    "GUARANTEE_DAYS": 30,
+    "DAILY_PROFIT_GOAL": 500
+  },
+  "higgsfield": { "credits": 2550.1, "plan": "ultra", "test_cost_credits": 2 },
+  "updated": "2026-06-10"
+}
