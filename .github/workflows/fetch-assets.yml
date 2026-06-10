@@ -1,0 +1,28 @@
+name: fetch-assets
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download generated assets listed in the manifest
+        run: |
+          python3 - <<'EOF'
+          import json, os, urllib.request
+          for m in json.load(open('05-creative/asset-manifest.json')):
+              os.makedirs(os.path.dirname(m['path']), exist_ok=True)
+              urllib.request.urlretrieve(m['url'], m['path'])
+              print('fetched', m['path'])
+          EOF
+      - name: Commit fetched assets
+        run: |
+          git config user.name "asset-fetcher"
+          git config user.email "actions@users.noreply.github.com"
+          git add 05-creative
+          git commit -m "Fetch generated creative assets (higgsfield CDN blocked from dev container)" || echo "nothing to commit"
+          git push
