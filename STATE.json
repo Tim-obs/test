@@ -1,6 +1,6 @@
 {
   "phase": 3,
-  "phase_name": "product-build",
+  "phase_name": "product-build-complete",
   "completed": [
     "preflight-checks",
     "render-toolchain-install",
@@ -8,13 +8,18 @@
     "preflight-report",
     "phase1-research",
     "phase2-offer-map",
-    "fe-book-75pp-rendered-and-qa"
+    "fe-book-75pp-rendered-and-qa",
+    "u1-toolkit-36pp",
+    "u2-hardcases-41pp",
+    "phase3-gate-passed"
   ],
   "artifacts": [
     "00-preflight/PREFLIGHT.md",
     "01-research/market-research.md",
     "02-offer/offer-map.md",
-    "03-products/CalmWalk-The-21-Day-Calm-Walks-Plan.pdf"
+    "03-products/CalmWalk-The-21-Day-Calm-Walks-Plan.pdf",
+    "03-products/CalmWalk-Toolkit.pdf",
+    "03-products/CalmWalk-Hard-Cases-Manual.pdf"
   ],
   "blockers": [
     "GHL_PIT_TOKEN env var not set",
@@ -23,8 +28,8 @@
     "GHL_LOCATION empty \u2014 operator must name sub-account and confirm staging vs live",
     "SUPPORT_EMAIL and FUNNEL_DOMAIN unset"
   ],
-  "gate": "GREEN through Phase 2; operator approved Phases 1-5 partial run",
-  "gate_note": "FE book complete (75pp, visual QA on all sheets, 1 overflow found+fixed). Next: U1 toolkit.",
+  "gate": "GREEN through Phase 3",
+  "gate_note": "3 QA'd PDFs: FE 75pp / U1 36pp / U2 41pp (mins 70/35/40). Next: Phase 4 funnel pages.",
   "variables": {
     "NICHE": "PICK",
     "BRAND": "AUTO",
