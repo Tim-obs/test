@@ -1,6 +1,6 @@
 {
-  "phase": 5,
-  "phase_name": "creative-complete",
+  "phase": 8,
+  "phase_name": "final-report",
   "completed": [
     "preflight-checks",
     "render-toolchain-install",
@@ -17,7 +17,11 @@
     "page-imagery-5",
     "ads-24-generated-4x5-2k",
     "ads-scored-avg-86.9-all-above-80",
-    "cdn-fetch-via-actions"
+    "cdn-fetch-via-actions",
+    "legal-drafts",
+    "deploy-runbook-with-emails",
+    "token-swap-script",
+    "final-report"
   ],
   "artifacts": [
     "00-preflight/PREFLIGHT.md",
@@ -35,7 +39,11 @@
     "05-creative/pages/",
     "05-creative/ads/final/",
     "05-creative/ads/ADS-MANIFEST.md",
-    "05-creative/ads/LAUNCH-PLAN.md"
+    "05-creative/ads/LAUNCH-PLAN.md",
+    "06-legal/DRAFTS.md",
+    "06-deploy/DEPLOY-RUNBOOK.md",
+    "04-pages/swap_tokens.py",
+    "FINAL-REPORT.md"
   ],
   "blockers": [
     "GHL_PIT_TOKEN env var not set",
@@ -44,8 +52,8 @@
     "GHL_LOCATION empty \u2014 operator must name sub-account and confirm staging vs live",
     "SUPPORT_EMAIL and FUNNEL_DOMAIN unset"
   ],
-  "gate": "GREEN through Phase 5",
-  "gate_note": "Phases 6-7 blocked (GHL). Next: deploy runbook + emails + legal drafts + FINAL-REPORT.",
+  "gate": "MISSION PARTIAL-COMPLETE: Phases 0-5 + 8 done; 6-7 blocked by environment",
+  "gate_note": "READY FOR TRAFFIC: NO - funnel not deployed (no GHL access from this environment). Resume at Phase 6 per DEPLOY-RUNBOOK.",
   "variables": {
     "NICHE": "PICK",
     "BRAND": "AUTO",
@@ -74,5 +82,13 @@
     "aov_model": 68.09,
     "breakeven_cpa": 62,
     "target_cpa": 40
+  },
+  "resume": {
+    "next_phase": 6,
+    "requires": [
+      "GHL_PIT_TOKEN",
+      "network allowlist: services.leadconnectorhq.com",
+      "logged-in GHL browser profile for builder steps (or manual runbook)"
+    ]
   }
 }
