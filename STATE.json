@@ -1,17 +1,28 @@
 {
-  "phase": 0,
-  "phase_name": "preflight",
-  "completed": ["preflight-checks", "render-toolchain-install", "higgsfield-connectivity", "preflight-report"],
-  "artifacts": ["00-preflight/PREFLIGHT.md"],
+  "phase": 2,
+  "phase_name": "offer-architecture",
+  "completed": [
+    "preflight-checks",
+    "render-toolchain-install",
+    "higgsfield-connectivity",
+    "preflight-report",
+    "phase1-research",
+    "phase2-offer-map"
+  ],
+  "artifacts": [
+    "00-preflight/PREFLIGHT.md",
+    "01-research/market-research.md",
+    "02-offer/offer-map.md"
+  ],
   "blockers": [
     "GHL_PIT_TOKEN env var not set",
     "GHL API and app domains blocked by environment network policy (403 via egress proxy)",
-    "No logged-in Chrome profile / no browsers in cloud container — GHL builder automation impossible here",
-    "GHL_LOCATION empty — operator must name sub-account and confirm staging vs live",
+    "No logged-in Chrome profile / no browsers in cloud container \u2014 GHL builder automation impossible here",
+    "GHL_LOCATION empty \u2014 operator must name sub-account and confirm staging vs live",
     "SUPPORT_EMAIL and FUNNEL_DOMAIN unset"
   ],
-  "gate": "RED-PARTIAL",
-  "gate_note": "Phases 1-5 executable locally; Phases 6-7 blocked. Awaiting operator decision on partial proceed.",
+  "gate": "GREEN through Phase 2; operator approved Phases 1-5 partial run",
+  "gate_note": "Niche: leash-reactive dog training. Brand: CalmWalk. Mechanism: Green Zone Method. Next: Phase 3 product build.",
   "variables": {
     "NICHE": "PICK",
     "BRAND": "AUTO",
@@ -23,6 +34,21 @@
     "GUARANTEE_DAYS": 30,
     "DAILY_PROFIT_GOAL": 500
   },
-  "higgsfield": { "credits": 2550.1, "plan": "ultra", "test_cost_credits": 2 },
-  "updated": "2026-06-10"
+  "higgsfield": {
+    "credits": 2550.1,
+    "plan": "ultra",
+    "test_cost_credits": 2
+  },
+  "updated": "2026-06-10",
+  "decisions": {
+    "niche": "leash-reactive dog owners",
+    "brand": "CalmWalk",
+    "mechanism": "The Green Zone Method",
+    "fe": "The 21-Day Calm Walks Plan",
+    "u1": "The Calm Walks Toolkit",
+    "u2": "The Hard Cases Manual",
+    "aov_model": 68.09,
+    "breakeven_cpa": 62,
+    "target_cpa": 40
+  }
 }
