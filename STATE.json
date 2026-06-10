@@ -1,6 +1,6 @@
 {
-  "phase": 4,
-  "phase_name": "funnel-pages-complete",
+  "phase": 5,
+  "phase_name": "creative-complete",
   "completed": [
     "preflight-checks",
     "render-toolchain-install",
@@ -13,7 +13,11 @@
     "u2-hardcases-41pp",
     "phase3-gate-passed",
     "six-pages-built",
-    "mobile-390px-screenshots-approved"
+    "mobile-390px-screenshots-approved",
+    "page-imagery-5",
+    "ads-24-generated-4x5-2k",
+    "ads-scored-avg-86.9-all-above-80",
+    "cdn-fetch-via-actions"
   ],
   "artifacts": [
     "00-preflight/PREFLIGHT.md",
@@ -27,7 +31,11 @@
     "04-pages/p3-upsell1.html",
     "04-pages/p4-downsell.html",
     "04-pages/p5-upsell2.html",
-    "04-pages/p6-thankyou.html"
+    "04-pages/p6-thankyou.html",
+    "05-creative/pages/",
+    "05-creative/ads/final/",
+    "05-creative/ads/ADS-MANIFEST.md",
+    "05-creative/ads/LAUNCH-PLAN.md"
   ],
   "blockers": [
     "GHL_PIT_TOKEN env var not set",
@@ -36,8 +44,8 @@
     "GHL_LOCATION empty \u2014 operator must name sub-account and confirm staging vs live",
     "SUPPORT_EMAIL and FUNNEL_DOMAIN unset"
   ],
-  "gate": "GREEN through Phase 4",
-  "gate_note": "6 single-file mobile-first pages with IMG/URL tokens; gate screenshots in /evidence. Next: Phase 5 creative.",
+  "gate": "GREEN through Phase 5",
+  "gate_note": "Phases 6-7 blocked (GHL). Next: deploy runbook + emails + legal drafts + FINAL-REPORT.",
   "variables": {
     "NICHE": "PICK",
     "BRAND": "AUTO",
@@ -52,7 +60,8 @@
   "higgsfield": {
     "credits": 2550.1,
     "plan": "ultra",
-    "test_cost_credits": 2
+    "test_cost_credits": 2,
+    "credits_spent_estimate": 62
   },
   "updated": "2026-06-10",
   "decisions": {
