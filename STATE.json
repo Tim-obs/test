@@ -1,18 +1,20 @@
 {
-  "phase": 2,
-  "phase_name": "offer-architecture",
+  "phase": 3,
+  "phase_name": "product-build",
   "completed": [
     "preflight-checks",
     "render-toolchain-install",
     "higgsfield-connectivity",
     "preflight-report",
     "phase1-research",
-    "phase2-offer-map"
+    "phase2-offer-map",
+    "fe-book-75pp-rendered-and-qa"
   ],
   "artifacts": [
     "00-preflight/PREFLIGHT.md",
     "01-research/market-research.md",
-    "02-offer/offer-map.md"
+    "02-offer/offer-map.md",
+    "03-products/CalmWalk-The-21-Day-Calm-Walks-Plan.pdf"
   ],
   "blockers": [
     "GHL_PIT_TOKEN env var not set",
@@ -22,7 +24,7 @@
     "SUPPORT_EMAIL and FUNNEL_DOMAIN unset"
   ],
   "gate": "GREEN through Phase 2; operator approved Phases 1-5 partial run",
-  "gate_note": "Niche: leash-reactive dog training. Brand: CalmWalk. Mechanism: Green Zone Method. Next: Phase 3 product build.",
+  "gate_note": "FE book complete (75pp, visual QA on all sheets, 1 overflow found+fixed). Next: U1 toolkit.",
   "variables": {
     "NICHE": "PICK",
     "BRAND": "AUTO",

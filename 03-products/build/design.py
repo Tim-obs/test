@@ -19,7 +19,7 @@ body { background:#888; font-family:'Lato','Open Sans',sans-serif; color:%(ink)s
 .chrome { position:absolute; left:0; right:0; bottom:0; height:54px; }
 .chrome .rule { position:absolute; left:72px; right:72px; top:0; border-top:2px solid %(forest)s; }
 .chrome .brand { position:absolute; left:72px; top:12px; font-size:10px; letter-spacing:2.5px;
-                 font-weight:bold; color:%(forest)s; }
+                 font-weight:bold; color:%(forest)s; white-space:nowrap; }
 .chrome .mid { position:absolute; left:0; right:0; top:12px; text-align:center; font-size:10px;
                letter-spacing:2px; color:%(mut)s; }
 .chrome .pno { position:absolute; right:72px; top:8px; font-size:12px; font-weight:bold;
@@ -186,7 +186,8 @@ def page(body, pno=None, part=None, partcolor=None, cls="", chrome=True,
          brand="THE GREEN ZONE METHOD", mid="CALMWALK"):
     tab = ""
     if part:
-        tab = f'<div class="ptab" style="background:{partcolor or PALETTE["sage"]}"><span>{part}</span></div>'
+        label = part.replace("PART ", "")
+        tab = f'<div class="ptab" style="background:{partcolor or PALETTE["sage"]}"><span>{label}</span></div>'
     ch = ""
     if chrome:
         pn = f'<div class="pno">{pno}</div>' if pno else ""
@@ -509,7 +510,7 @@ def svg_decision_flow(w=560, h=380):
 <text x="471" y="314" font-family="Lato" font-size="12.5" font-weight="bold" fill="#FFF" text-anchor="middle">THEN work the loop</text>
 <rect x="14" y="274" width="156" height="56" rx="10" fill="{PL}" stroke="{F2}" stroke-width="2"/>
 <text x="92" y="297" font-family="Lato" font-size="12.5" font-weight="bold" fill="{F}" text-anchor="middle">explosion anyway?</text>
-<text x="92" y="314" font-family="Lato" font-size="12.5" font-weight="bold" fill="{F}" text-anchor="middle">&#8594; Recovery Script, p.62</text>
+<text x="92" y="314" font-family="Lato" font-size="12.5" font-weight="bold" fill="{F}" text-anchor="middle">&#8594; Recovery Script, p.62#8594; Recovery Script, p. 56</text>
 <line x1="92" y1="234" x2="92" y2="272" stroke="{INK}" stroke-width="3" stroke-dasharray="7 6"/>
 </svg>'''
 
@@ -605,7 +606,7 @@ def svg_recovery_curve(w=560, h=240):
 <text x="470" y="186" font-family="Lato" font-size="10.5" fill="{MUT}">day 2&#8211;3</text>
 <rect x="330" y="52 " width="190" height="58" rx="10" fill="{F}"/>
 <text x="425" y="76" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">after a blow-up: 48-hour</text>
-<text x="425" y="94" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">quiet protocol (p. 63)</text>
+<text x="425" y="94" font-family="Lato" font-size="12" font-weight="bold" fill="#FFF" text-anchor="middle">quiet protocol (p. 56)</text>
 </svg>'''
 
 def svg_treat_magnet(w=460, h=250):
