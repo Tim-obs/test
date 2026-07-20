@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Asset Engine: one small product you create with AI, ads where every dollar buys a buyer, and a list you own — that you launch to every 90 days.">
+<title>The Asset Engine Masterclass &#8212; Obsidius</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+ color:#23252B;background:#F7F6F3;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+.bar{background:#0D0E11;color:#F7F6F3;text-align:center;font-size:13.5px;font-weight:700;
+ letter-spacing:.4px;padding:10px 14px}
+.bar b{color:#F0A32B}
+.hero{background:#0D0E11;color:#F7F6F3;padding:6px 0 34px 0}
+.logo{text-align:center;padding:20px 0 4px 0;font-weight:900;letter-spacing:6px;font-size:16px;color:#F7F6F3}
+.logo span{color:#F0A32B}
+.kicker{text-align:center;font-size:12px;letter-spacing:2.5px;font-weight:800;color:#F0A32B;
+ text-transform:uppercase;margin:16px 0 10px 0}
+h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(28px,5.8vw,42px);line-height:1.14;
+ text-align:center;color:#F7F6F3;margin:8px 0 16px 0}
+h2{font-family:Georgia,serif;font-size:clamp(22px,4.5vw,29px);line-height:1.22;color:#14161B;margin:38px 0 12px 0}
+h3{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#8A6116;margin:24px 0 8px 0}
+p{margin:0 0 14px 0}
+.sub{text-align:center;font-size:clamp(16px,3.4vw,19px);color:#B9B6AE;max-width:600px;margin:0 auto 20px auto}
+.xstrip{background:#16181E;border:1px solid #2C2F38;border-radius:14px;padding:16px 18px;margin:18px 0}
+.xstrip div{padding:6px 0;font-weight:600;font-size:15.5px;color:#E8E6E1}
+.xstrip span{color:#E06A4E;font-weight:900;margin-right:8px}
+.ckl{list-style:none;margin:10px 0}
+.ckl li{padding:8px 0 8px 34px;position:relative}
+.ckl li:before{content:"\2713";position:absolute;left:0;top:8px;background:#1F5C46;color:#fff;
+ width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-size:13px;font-weight:900}
+.xl{list-style:none;margin:10px 0}
+.xl li{padding:8px 0 8px 34px;position:relative}
+.xl li:before{content:"\2715";position:absolute;left:0;top:8px;background:#C2543C;color:#fff;
+ width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-size:13px;font-weight:900}
+.cta{display:block;background:#F0A32B;color:#14161B;text-align:center;text-decoration:none;
+ font-size:clamp(17px,3.8vw,21px);font-weight:900;padding:18px 22px;border-radius:14px;
+ box-shadow:0 4px 0 #A96E13;margin:14px 0 6px 0}
+.cta small{display:block;font-size:13px;font-weight:700;color:#5B4207;margin-top:3px}
+.micro{text-align:center;font-size:12.5px;color:#9A968C;margin-bottom:8px}
+.hero .micro{color:#8D8A84}
+.box{background:#fff;border:1px solid #E2DFD8;border-radius:16px;padding:22px;margin:20px 0}
+.box-dark{background:#0D0E11;color:#F7F6F3;border-radius:16px;padding:24px;margin:22px 0}
+.box-dark h2,.box-dark h3{color:#F7F6F3;margin-top:0}
+.box-dark p{color:#D8D5CE}
+.phase{display:flex;gap:14px;margin:20px 0;align-items:flex-start}
+.phase .n{font-family:Georgia,serif;font-size:32px;font-weight:700;color:#F0A32B;min-width:52px}
+.phase b.t{display:block;font-size:18px;color:#14161B;margin-bottom:4px;letter-spacing:.5px}
+.math{background:#0D0E11;color:#E8E6E1;border-radius:16px;padding:24px;margin:20px 0;
+ font-size:16.5px}
+.math p{margin:0 0 12px 0}
+.math .mrow{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed #2C2F38;
+ padding:8px 0;font-size:15.5px}
+.math .mrow b{color:#F0A32B;white-space:nowrap}
+.stack{width:100%;border-collapse:collapse;margin:10px 0}
+.stack td{padding:10px 4px;border-bottom:1px dashed #E2DFD8;font-size:15.5px}
+.stack td:last-child{text-align:right;font-weight:800;color:#1F5C46;white-space:nowrap;
+ text-transform:uppercase;font-size:12.5px;letter-spacing:1px}
+.price{text-align:center;margin:12px 0 4px 0}
+.price .now{font-family:Georgia,serif;font-size:48px;font-weight:900;color:#14161B}
+.guarantee{background:#EAF1EC;border:2px solid #9DBFA9;border-radius:16px;padding:22px;margin:22px 0}
+.guarantee h3{margin-top:0;color:#1F5C46}
+.faq-q{font-weight:800;color:#14161B;margin:18px 0 4px 0;font-size:16.5px}
+.faq-a{margin-bottom:6px}
+.case{background:#fff;border:1px solid #E2DFD8;border-radius:16px;padding:20px 22px;margin:14px 0}
+.case .who{font-size:12.5px;letter-spacing:1.5px;font-weight:800;text-transform:uppercase;
+ color:#8A6116;margin-bottom:8px}
+.case p{margin:0}
+footer{background:#0D0E11;color:#8D8A84;font-size:12.5px;line-height:1.7;padding:34px 20px;margin-top:48px}
+footer .wrap{max-width:680px}
+footer a{color:#B08430;text-decoration:none;margin-right:14px}
+footer b{color:#F7F6F3;letter-spacing:3px}
+</style></head>
+<body>
+<div class="bar"><b>$27 &#183; everything included &#183; 30-day guarantee</b> &#8212; you keep what you download, even if you refund.</div>
+
+<div class="hero"><div class="wrap">
+  <div class="logo">OBSID<span>IUS</span></div>
+  <div class="kicker">The Asset Engine Masterclass</div>
+  <h1>They sold you the course. They kept the list. The list was the business.</h1>
+  <p class="sub">The Asset Engine is how you build yours: one small product you create with AI
+  in a weekend, ads where every dollar buys a buyer &#8212; not a view &#8212; and a list you own,
+  that you launch to every 90 days.</p>
+
+  <div class="xstrip">
+    <div><span>&#10005;</span>No income screenshots. Anyone can fake a Stripe dashboard. The pitch here is arithmetic &#8212; you can check it yourself.</div>
+    <div><span>&#10005;</span>No reselling this course. Your product will be about dog training, meal prep, or resumes &#8212; your niche, not this one.</div>
+    <div><span>&#10005;</span>No &ldquo;post three times a day and wait two years.&rdquo; Ads buy buyers from day one.</div>
+    <div><span>&#10005;</span>No ladder. There is no $997 &ldquo;advanced tier&rdquo; behind this page. $27 is the whole thing.</div>
+  </div>
+
+  <a class="cta" href="{{URL:CHECKOUT}}">GET THE ASSET ENGINE &#8212; $27
+  <small>Instant access &#183; 30-day guarantee &#183; keep everything you download</small></a>
+  <div class="micro">One payment. No subscription. No upsells.</div>
+</div></div>
+
+<div class="wrap">
+  <h2>You already know how this goes. You've been here before.</h2>
+  <p>You buy the course. You watch four modules. The &ldquo;system&rdquo; turns out to be:
+  post every day, build a personal brand, and wait &#8212; while your videos sit at zero views
+  and it starts to feel personal.</p>
+  <p>Or it's dropshipping, and the ad bill outruns the sales. People post the receipts:
+  $3,000 on ads, ten sales.</p>
+  <p>Or it's reselling the very course you just bought &#8212; until there's no one left
+  to sell to.</p>
+  <p>Or it's a funnel course where someone spends $7,000 on ads and gets $1,200 back,
+  and the &ldquo;expert&rdquo; shrugs.</p>
+  <p>So you tell yourself you're one course away. One more secret. And some part of you
+  already knows what the next page of screenshots is worth.</p>
+
+  <h2>The part they never put on the page</h2>
+  <p>Watch what the guy selling it actually does. Not what he teaches &#8212; what he does.</p>
+  <p>He sells a course. Thousands buy it. You were one of them.</p>
+  <p>Now he owns the thing you never see: a list of thousands of people who pulled out a card
+  and paid him. From then on, launches cost him almost nothing. He writes an email. The list
+  buys. That's the business.</p>
+  <p><b>The course was never the product. You were.</b> You joined his buyer list the day you
+  paid &#8212; and he can sell to you for years.</p>
+  <p>Every model you tried had the same hole in it. Dropshipping: Meta's traffic, Shopify's
+  storefront. Etsy: Etsy's customers, Etsy's fees. Agency work: the client's brand, gone when
+  they leave. Faceless pages: an account the platform can delete tonight. You did the work &#8212;
+  someone else kept the buyer.</p>
+  <p>That's why nothing compounded. Not because you're lazy. Because every buyer you ever
+  created was added to someone else's list.</p>
+
+  <h2>The Asset Engine: three parts, one loop</h2>
+  <div class="phase"><div class="n">01</div><div><b class="t">BUILD</b>
+  Pick a niche where people already spend money. Build one small product that solves one
+  specific problem &#8212; a PDF, a video pack &#8212; priced so a stranger buys it the first
+  time they see it: $27. This used to be the step that took months and stopped everyone. Now
+  it's the fastest step: AI does the research, the outline, and the drafting &#8212; you steer
+  it, check it, and make it good. Most people build it in a weekend. Phase 1 is over in the
+  first module.</div></div>
+  <div class="phase"><div class="n">02</div><div><b class="t">RUN</b>
+  Run ads straight to the $27 offer. When a stranger buys, the sale pays back most &#8212;
+  sometimes all &#8212; of the ad cost. You didn't buy a view. You didn't buy a follower. You
+  bought a buyer: a person who has already paid you. The ads keep running. The list keeps
+  growing. Phase 2 never stops.</div></div>
+  <div class="phase"><div class="n">03</div><div><b class="t">LAUNCH</b>
+  Every 90 days, you make one bigger offer to your list &#8212; $497, $997, $1,997. A workshop.
+  A full program. A toolkit. Built the same way you built the first product. Most of the list
+  won't buy. Some will &#8212; at rates cold strangers never touch, because they've already
+  paid you once. The cart closes. Phase 2 keeps adding buyers for the next one.</div></div>
+
+  <div class="box">
+    <p><b>The part that matters:</b> at your first launch, the list might be 800 buyers. By the
+    second, it's 2,000 &#8212; the ads never stopped adding. Same launch work. Bigger list.
+    Bigger result. Client work resets to zero on the first of every month. This stacks, quarter
+    after quarter, for years.</p>
+    <p style="margin-bottom:0">No algorithm to beg. No client who can fire you. No platform
+    that can shut you off. The product, the list, the revenue &#8212; yours.</p>
+  </div>
+
+  <h2>Sit down and run the math yourself</h2>
+  <p>No screenshots. Screenshots can be faked. Arithmetic can't.</p>
+  <div class="math">
+    <p>Say a buyer costs you <b>$30 in ads</b>. Not a best case &#8212; a boring, believable number.</p>
+    <p>The $27 sale hands $27 back. You're about $3 down per buyer. Sounds like losing. Keep going.</p>
+    <div class="mrow"><span>Ads: $20/day &#215; 90 days</span><b>&#8722; $1,800</b></div>
+    <div class="mrow"><span>&#8776; 60 buyers &#215; $27 back</span><b>+ $1,620</b></div>
+    <div class="mrow"><span>Net cost of the quarter</span><b>&#8776; $180</b></div>
+    <div class="mrow"><span>Launch week: $497 offer to 60 buyers, 3 buy</span><b>+ $1,491</b></div>
+    <p style="margin-top:14px">Now break the numbers on purpose. Double the ad cost. Halve the
+    launch rate. It bends &#8212; it doesn't flip. Because a buyer costs you money once and can
+    pay you every quarter after. A follower can't do that. A view can't do that. Only a list of
+    buyers can.</p>
+    <p>And if the niche is wrong? The ads tell you inside a week, for about a hundred dollars
+    &#8212; not after a year of posting into silence.</p>
+    <p style="margin-bottom:0;font-size:13.5px;color:#9A968C">These aren't promised results.
+    They're the model's arithmetic, small on purpose &#8212; so you can check every step of it.</p>
+  </div>
+
+  <h2>The step that kept you out is gone</h2>
+  <p>This model isn't new. Newsletter publishers and course sellers have run it quietly for
+  decades: a cheap front door, a buyer list, launches out the back.</p>
+  <p>What kept normal people out was the product. Writing a real, useful product used to take
+  months of nights. That's where everyone quit.</p>
+  <p>And no &#8212; this isn't &ldquo;AI does everything.&rdquo; You've watched &ldquo;AI side
+  hustle&rdquo; become the new dropshipping. Here, AI does exactly one job: the part that used
+  to stop you. Research, outline, first draft. You pick the niche, point it at a real problem,
+  and make it true. What took weeks takes hours.</p>
+  <p>The masterclass hands you the exact prompts for every step: research the niche, validate
+  the offer, draft the product, write the launch emails. There is no blank page anywhere in
+  this system.</p>
+
+  <h2>What's inside &#8212; and what deliberately isn't</h2>
+  <p>The course is short. Not an 80-module monster you'll never finish. You'll have everything
+  set up and ads running before most courses finish their intro section.</p>
+  <ul class="ckl">
+    <li><b>The full Asset Engine system</b> &#8212; pick the niche, build the $27 offer, run
+    the ads, run the 90-day launches. Step by step, in order.</li>
+    <li><b>The AI Product Builder</b> &#8212; the exact prompts that research your niche,
+    validate your offer, and draft your entire front-end product.</li>
+    <li><b>The Quarterly Launch Framework</b> &#8212; how to structure the big offer, write
+    the email sequence, set the price, and open the cart.</li>
+    <li><b>The Tech Stack walkthrough</b> &#8212; every tool you need, set up in order, no
+    code. Your whole system live before the end of Module 1.</li>
+    <li><b>The Reference Board</b> &#8212; every prompt, link, and checklist, organized by
+    module. You always know the next step.</li>
+    <li><b>The Operator Room</b> &#8212; a private community of people actually building:
+    real funnels, a leaderboard, what's working traded in real time.</li>
+    <li><b>All five bonuses</b> &#8212; included today. Not sold to you later.</li>
+  </ul>
+
+  <h2>People running it now</h2>
+  <div class="case"><div class="who">Bella &#183; beauty &amp; wellness &#183; former retail manager</div>
+  <p>Built her product on a Sunday. Turned ads on Monday morning. First sale by that evening
+  &#8212; she stared at the Stripe notification for ten minutes.</p></div>
+  <div class="case"><div class="who">James &#183; productivity &#183; software engineer, still employed</div>
+  <p>&ldquo;I'm still at my day job. I never wanted to quit &#8212; I just wanted the math to
+  stop being tight. I spend about six hours a week on this. The ads run without me. The product
+  sells without me. Every 90 days I run a launch and it puts a number in my account that my
+  job doesn't.&rdquo;</p></div>
+  <div class="case"><div class="who">Mark &#183; finance education &#183; former agency owner</div>
+  <p>Years of client work, where every month started at zero. Now the list he built is the one
+  asset that doesn't leave when a client does.</p></div>
+
+  <div class="box">
+    <h3 style="margin-top:0">Who this is NOT for</h3>
+    <ul class="xl">
+      <li>You need money this week. First sales usually land within days &#8212; the launch
+      that matters lands around month three.</li>
+      <li>You can't put $10&#8211;20 a day into ads. The engine runs on a small test budget.
+      It doesn't run on zero.</li>
+      <li>You want it done for you. AI drafts; you decide, check, and ship. Five to ten hours
+      a week.</li>
+      <li>You collect courses. If Module 1 doesn't end with your system live, refund it and
+      keep the downloads. Fair trade.</li>
+    </ul>
+  </div>
+
+  <h2>Everything you get today &#8212; $27</h2>
+  <table class="stack">
+    <tr><td>The full Asset Engine system</td><td>included</td></tr>
+    <tr><td>The AI Product Builder prompts</td><td>included</td></tr>
+    <tr><td>The Quarterly Launch Framework</td><td>included</td></tr>
+    <tr><td>The Tech Stack walkthrough</td><td>included</td></tr>
+    <tr><td>The Reference Board</td><td>included</td></tr>
+    <tr><td>The Operator Room community + leaderboard</td><td>included</td></tr>
+    <tr><td>All five bonuses</td><td>included</td></tr>
+  </table>
+  <p>The standard play in this market is a $27 course that's really an ad for a $997 course
+  that's really an ad for an $8,000 mastermind. That's not this. One payment. Instant access.
+  The whole thing.</p>
+  <p><b>If a $27 course can't show you the model working, a $997 one won't either.</b></p>
+  <div class="price"><span class="now">$27</span></div>
+  <a class="cta" href="{{URL:CHECKOUT}}">GET INSTANT ACCESS &#8212; $27
+  <small>One payment &#183; everything included &#183; 30-day guarantee</small></a>
+
+  <div class="guarantee">
+    <h3>The 30-day keep-everything guarantee</h3>
+    <p>Watch every module. Download every bonus. If within 30 days you don't see a path forward
+    for yourself, email us and the $27 comes back &#8212; no forms, no questions, no hoops.
+    Everything you downloaded stays yours.</p>
+    <p style="margin-bottom:0">Compare that to the courses in this market that spell out
+    &ldquo;no refunds, due to the digital nature of the product.&rdquo; We know which side of
+    that line builds trust.</p>
+  </div>
+
+  <div class="box-dark">
+    <h2 style="font-size:clamp(20px,4vw,26px)">&ldquo;If this works, why are you selling a $27 course about it?&rdquo;</h2>
+    <p>Fair question. It's the right question to ask everyone in this market.</p>
+    <p>The honest answer: this page is an Asset Engine. A $27 front-end product, sold with ads,
+    building a buyer list. You're inside the model right now, watching it run &#8212; in the open.</p>
+    <p>The difference from the loop you're worried about: you won't be selling this course. You
+    won't be selling any course about making money. You'll build your engine in your own niche
+    &#8212; dog training, meal prep, resume writing, watercolor &#8212; a market where people
+    already spend, on a problem you'll pick in Module 1.</p>
+    <p style="margin-bottom:0">This model doesn't need secrecy to work. It needs execution. Most
+    people won't execute. The ones who will are worth more to us building in the room &#8212;
+    posting numbers on the leaderboard &#8212; than their $27.</p>
+  </div>
+
+  <h2>Questions, answered straight</h2>
+  <div class="faq-q">I'm still working a 9-to-5. Can I actually do this?</div>
+  <div class="faq-a">Yes &#8212; it's built for that. Five to ten hours a week. No client calls
+  to schedule around your job. No shipping. No face on camera. No live anything. The ads run
+  while you're at work.</div>
+  <div class="faq-q">Do I need an audience?</div>
+  <div class="faq-a">No &#8212; and you don't want one. An audience is free followers who may
+  never buy. A buyer list is people who already pulled out a card. The Asset Engine uses ads to
+  skip the build-an-audience-for-two-years step entirely.</div>
+  <div class="faq-q">Do I need to know my niche already?</div>
+  <div class="faq-a">No. Niche selection is built into the system: how to find markets where
+  people already spend, how to check the demand is real, and how to pick one you can execute
+  within days.</div>
+  <div class="faq-q">I've bought courses before and never finished them. Why would this be different?</div>
+  <div class="faq-a">Two reasons. It's short &#8212; everything is set up and ads are running
+  before most courses finish their intro section. And the step that kills most people &#8212;
+  creating the product &#8212; is now the fastest step, because the drafting is automated.</div>
+  <div class="faq-q">How much do I need for ads?</div>
+  <div class="faq-a">You can start at $10&#8211;20 a day. You don't need $1,000 &#8212; you
+  need enough to run a test. And the $27 sales pay back ad cost as you go.</div>
+  <div class="faq-q">How fast will I see something?</div>
+  <div class="faq-a">First sale usually comes 1&#8211;7 days after the ads go live &#8212;
+  Bella's came in 24 hours. The quarterly launch &#8212; the money that matters &#8212; kicks
+  in around month three, when your list is worth launching to.</div>
+  <div class="faq-q">I'm not technical.</div>
+  <div class="faq-a">If you can follow instructions on a screen, you can build this. No code.
+  The Tech Stack walkthrough has your system live before the end of Module 1.</div>
+  <div class="faq-q">What if it's not for me?</div>
+  <div class="faq-a">Thirty days. Full refund. Keep everything you downloaded. One email &#8212; done.</div>
+
+  <h2 style="text-align:center">Two ways the next 90 days go</h2>
+  <p class="sub" style="color:#6B675C">Ninety days from now, you're either someone whose buyer
+  list just hit its first launch &#8212; or you're reading another page like this one, starting
+  the clock again. The quarter passes either way.</p>
+  <a class="cta" href="{{URL:CHECKOUT}}">START THE ENGINE &#8212; $27
+  <small>Instant access &#183; 30-day keep-everything guarantee</small></a>
+</div>
+
+<footer><div class="wrap">
+<p><b>OBSIDIUS</b> &#183; The Asset Engine Masterclass</p>
+<p>This page describes a business model and teaches a skill set. It does not promise income.
+All numbers above are arithmetic illustrations of the model &#8212; not projections, averages,
+or guarantees. Building any business involves cost and risk, including advertising spend you
+may not recover, and many businesses make no money. Results mentioned are individual examples,
+not typical outcomes.</p>
+<p>This site is not part of, or endorsed by, Facebook&#8482;, Instagram&#8482;, or Meta
+Platforms, Inc.</p>
+<p><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/refund">Refund Policy</a>
+<a href="/disclaimer">Disclaimer</a><a href="mailto:{{SUPPORT_EMAIL}}">Support</a></p>
+<p>&#169; Obsidius 2026. All rights reserved.</p>
+</div></footer></body></html>
