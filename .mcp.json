@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "track123": {
+      "type": "http",
+      "url": "https://shp.track123.com/shopify/mcp",
+      "headers": {
+        "X-Api-Key": "${TRACK123_API_KEY}",
+        "X-Store-Uuid": "tccji6-p0"
+      }
+    }
+  }
+}
